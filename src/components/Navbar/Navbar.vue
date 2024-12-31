@@ -1,5 +1,5 @@
 <template>
-    <div class="min-h-screen bg-black bg-pattern">
+    <div>
     <nav class="p-4">
       <div class="container mx-auto flex justify-between items-center">
         <div class="flex items-center space-x-2">
@@ -18,3 +18,5 @@
     </nav>
 </div>
 </template>
+
+
