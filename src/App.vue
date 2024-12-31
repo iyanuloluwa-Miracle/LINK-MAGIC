@@ -1,5 +1,18 @@
 <template>
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+ <div>
+  <Navbar/>
+ </div>
 </template>
+
+<script>
+import Navbar from "./components/Navbar/Navbar.vue";
+
+
+export default {
+  components: {
+    Navbar,
+  },
+
+  
+};
+</script>
