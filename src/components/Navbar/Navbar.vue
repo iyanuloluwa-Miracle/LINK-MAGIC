@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-gradient-to-r from-purple-900 to-purple-800 border-b border-white/20">
+    <div class="bg-gradient-to-r from-purple-900 to-purple-800 border-b border-white/20 fixed top-0 w-full z-50">
         <nav class="px-4 py-3 md:py-4">
             <div class="container mx-auto flex justify-between items-center">
                 <!-- Logo Section -->

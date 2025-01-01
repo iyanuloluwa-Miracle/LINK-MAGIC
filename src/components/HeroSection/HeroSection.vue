@@ -59,9 +59,9 @@
       </svg>
     </div>
 
-    <div class="flex items-center justify-center p-9">
+    <div class="flex items-center justify-center p-9 ">
       <div
-        class="bg-purple-800/50 backdrop-blur-sm rounded-2xl p-6 max-w-md w-full"
+        class="bg-purple-800/50 backdrop-blur-sm rounded-2xl p-6 max-w-md w-full shadow-[0px_0px_15px_rgba(0,0,0,0.09)]"
       >
         <!-- Success Header -->
         <div class="flex items-center gap-2 mb-6">
@@ -99,16 +99,6 @@
           </div>
         </div>
 
-        <!-- Status -->
-        <div class="flex items-center justify-between">
-          <div class="flex items-center gap-2">
-            <div class="w-2 h-2 bg-green-400 rounded-full"></div>
-            <span class="text-purple-200 text-sm"
-              >Active and ready to share</span
-            >
-          </div>
-          <span class="text-purple-300 text-sm">Valid for 30 days</span>
-        </div>
       </div>
     </div>
   </section>
