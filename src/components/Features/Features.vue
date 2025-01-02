@@ -16,7 +16,7 @@
         </div>
         <h3 class="text-lg font-semibold mb-2">Simple Process</h3>
         <p class="text-gray-400 text-center">
-          Enhance fluency, vocabulary, tone & style.
+         Quick and intuitive process - just paste and click
         </p>
       </div>
 
@@ -26,7 +26,7 @@
         </div>
         <h3 class="text-lg font-semibold mb-2">Link Processing</h3>
         <p class="text-gray-400 text-center">
-          Rewrite sentences, paragraphs & more in seconds.
+          Handles any URL length with smart compression
         </p>
       </div>
 
@@ -36,7 +36,7 @@
         </div>
         <h3 class="text-lg font-semibold mb-2">Protected</h3>
         <p class="text-gray-400 text-center">
-          Find a style that's perfect for your project.
+         Enterprise-grade security with full encryption
         </p>
       </div>
 
@@ -46,7 +46,7 @@
         </div>
         <h3 class="text-lg font-semibold mb-2">Dependable</h3>
         <p class="text-gray-400 text-center">
-          Rephrase text in 20+ different languages.
+            99.9% uptime guarantee for all links
         </p>
       </div>
     </div>
