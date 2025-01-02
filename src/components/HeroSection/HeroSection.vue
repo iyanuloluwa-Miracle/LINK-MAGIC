@@ -39,7 +39,7 @@
       </div>
 
       <!-- Decorative Circles as SVG -->
-      <svg
+      <!-- <svg
         class="absolute -left-24 -top-24 opacity-30"
         width="200"
         height="200"
@@ -47,8 +47,8 @@
         xmlns="http://www.w3.org/2000/svg"
       >
         <circle cx="100" cy="100" r="100" fill="#7B61FF" />
-      </svg>
-      <svg
+      </svg> -->
+      <!-- <svg
         class="absolute -right-24 -bottom-24 opacity-30"
         width="200"
         height="200"
@@ -56,7 +56,7 @@
         xmlns="http://www.w3.org/2000/svg"
       >
         <circle cx="100" cy="100" r="100" fill="#007BFF" />
-      </svg>
+      </svg> -->
     </div>
 
     <div class="flex items-center justify-center p-9 ">
