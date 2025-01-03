@@ -1,5 +1,5 @@
 <template>
-  <footer class= "text-white py-8">
+  <footer class= "text-white pt-12">
     <div class="container mx-auto px-4 text-center">
       <div class="mb-6">
         <p class="text-lg mb-4">

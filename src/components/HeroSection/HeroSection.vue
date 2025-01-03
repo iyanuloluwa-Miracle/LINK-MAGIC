@@ -13,7 +13,7 @@
     <!-- URL Input Section -->
     <div class="max-w-3xl mx-auto relative z-10">
       <div class="backdrop-blur-lg bg-white/10 rounded-2xl p-2 shadow-xl">
-        <form @submit.prevent="shortenUrl" class="flex flex-col sm:flex-row gap-2">
+        <form @submit.prevent="handleSubmit" class="flex flex-col sm:flex-row gap-2">
           <input
             v-model="url"
             type="url"
@@ -24,9 +24,10 @@
           />
           <button
             type="submit"
+            :disabled="urlStore.isLoading"
             class="bg-blue-600 text-white px-6 sm:px-8 py-3 rounded-xl hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
           >
-            <span>Shorten</span>
+            <span>{{ urlStore.isLoading ? 'Shortening...' : 'Shorten' }}</span>
             <svg
               class="w-5 h-5"
               fill="none"
@@ -48,7 +49,7 @@
     <!-- Results Card -->
     <div class="flex items-center justify-center p-6 md:p-9 mt-8">
       <div
-        v-if="shortenedUrl"
+        v-if="urlStore.shortenedUrl"
         class="bg-purple-800/50 backdrop-blur-sm rounded-2xl p-4 md:p-6 max-w-md w-full shadow-lg transition-all"
       >
         <!-- Success Header -->
@@ -64,7 +65,7 @@
           <label for="original-url" class="text-purple-200 text-sm block mb-2">Original URL</label>
           <div class="bg-purple-900/50 rounded-lg p-3">
             <p id="original-url" class="text-purple-300 text-sm truncate">
-              {{ originalUrl }}
+             {{ urlStore.originalUrl }}
             </p>
           </div>
         </div>
@@ -77,12 +78,15 @@
           >
             <span id="shortened-url" class="text-purple-300 break-all">{{ shortenedUrl }}</span>
             <button
-              @click="copyToClipboard"
+              @click="urlStore.copyToClipboard"
               class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-1.5 rounded-lg transition-colors w-full sm:w-auto text-center focus:outline-none focus:ring-2 focus:ring-purple-400/50"
             >
-              {{ copied ? 'Copied!' : 'Copy' }}
+                {{ urlStore.copied ? 'Copied!' : 'Copy' }}
             </button>
           </div>
+        </div>
+          <div v-if="urlStore.error" class="text-red-400 text-sm mt-4">
+          {{ urlStore.error }}
         </div>
       </div>
     </div>
@@ -90,27 +94,13 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref } from 'vue';
+import { useUrlStore } from '../../stores/urlStore';
 
-const url = ref("");
-const originalUrl = ref("https://very-long-example-url.com/withmanyparameters...");
-const shortenedUrl = ref("linkmagic.io/x8Yk9");
-const copied = ref(false);
+const urlStore = useUrlStore();
+const url = ref('');
 
-const copyToClipboard = async () => {
-  try {
-    await navigator.clipboard.writeText(shortenedUrl.value);
-    copied.value = true;
-    setTimeout(() => {
-      copied.value = false;
-    }, 2000);
-  } catch (err) {
-    console.error("Failed to copy text: ", err);
-  }
-};
-
-const shortenUrl = () => {
-  // Implement URL shortening logic here
-  console.log("Shortening URL:", url.value);
+const handleSubmit = () => {
+  urlStore.shortenUrl(url.value);
 };
 </script>
