@@ -1,53 +1,78 @@
 <template>
   <section class="text-white px-6">
     <div class="max-w-4xl mx-auto text-center">
-      <h1 class="text-3xl md:text-4xl font-bold mb-4">
-        How to use it
+      <h1 class="text-3xl md:text-4xl font-bold mb-4 animate-fade-in">
+        Features
       </h1>
-      <p class="text-gray-300 text-lg mb-8">
-        <span class="text-green-500 font-semibold"> LinkMagic</span> allows to shorten long links from instagram, Facebook, Youtube, Twitter, Linked In, WhatsApp, TikTok, blogs and sites. Just paste the long URL and click the Shorten URL button. Copy the shortened URL and share it on sites, chat and emails
-      </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-      <div class="flex flex-col items-center bg-gray-800 p-6 rounded-lg">
-        <div class="text-green-500 text-3xl mb-4">
-          <img src="../../assets/user.svg" alt="user" class="w-8"/>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto mt-11">
+      <!-- Simple Process Card -->
+      <div class="group feature-card">
+        <div class="relative overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-br from-green-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          
+          <div class="relative z-10">
+            <div class="text-green-500 text-3xl mb-4 transform transition-transform duration-300 group-hover:scale-110">
+              <img src="../../assets/user.svg" alt="user" class="w-8 mx-auto"/>
+            </div>
+            <h3 class="text-lg font-semibold mb-3 group-hover:text-green-400 transition-colors text-center">Simple Process</h3>
+            <p class="text-gray-400 text-center text-sm group-hover:text-gray-300 transition-colors">
+              Quick and intuitive process - just paste and click
+            </p>
+          </div>
         </div>
-        <h3 class="text-lg font-semibold mb-2">Simple Process</h3>
-        <p class="text-gray-400 text-center">
-         Quick and intuitive process - just paste and click
-        </p>
       </div>
 
-      <div class="flex flex-col items-center bg-gray-800 p-6 rounded-lg">
-        <div class="text-yellow-500 text-3xl mb-4">
-           <img src="../../assets/link.svg" alt="user" class="w-8"/>
+      <!-- Link Processing Card -->
+      <div class="group feature-card">
+        <div class="relative overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          
+          <div class="relative z-10">
+            <div class="text-yellow-500 text-3xl mb-4 transform transition-transform duration-300 group-hover:scale-110">
+              <img src="../../assets/link.svg" alt="link" class="w-8 mx-auto"/>
+            </div>
+            <h3 class="text-lg font-semibold mb-3 group-hover:text-yellow-400 transition-colors text-center">Link Processing</h3>
+            <p class="text-gray-400 text-center text-sm group-hover:text-gray-300 transition-colors">
+              Handles any URL length with smart compression
+            </p>
+          </div>
         </div>
-        <h3 class="text-lg font-semibold mb-2">Link Processing</h3>
-        <p class="text-gray-400 text-center">
-          Handles any URL length with smart compression
-        </p>
       </div>
 
-      <div class="flex flex-col items-center bg-gray-800 p-6 rounded-lg">
-        <div class="text-red-500 text-3xl mb-4">
-          <img src="../../assets/security.svg" alt="user" class="w-8"/>
+      <!-- Protected Card -->
+      <div class="group feature-card">
+        <div class="relative overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-br from-red-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          
+          <div class="relative z-10">
+            <div class="text-red-500 text-3xl mb-4 transform transition-transform duration-300 group-hover:scale-110">
+              <img src="../../assets/security.svg" alt="security" class="w-8 mx-auto"/>
+            </div>
+            <h3 class="text-lg font-semibold mb-3 group-hover:text-red-400 transition-colors text-center">Protected</h3>
+            <p class="text-gray-400 text-center text-sm group-hover:text-gray-300 transition-colors">
+              Enterprise-grade security with full encryption
+            </p>
+          </div>
         </div>
-        <h3 class="text-lg font-semibold mb-2">Protected</h3>
-        <p class="text-gray-400 text-center">
-         Enterprise-grade security with full encryption
-        </p>
       </div>
 
-      <div class="flex flex-col items-center bg-gray-800 p-6 rounded-lg">
-        <div class="text-blue-500 text-3xl mb-4">
-         <img src="../../assets/bussiness.svg" alt="user" class="w-8"/> 
+      <!-- Dependable Card -->
+      <div class="group feature-card">
+        <div class="relative overflow-hidden bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          
+          <div class="relative z-10">
+            <div class="text-blue-500 text-3xl mb-4 transform transition-transform duration-300 group-hover:scale-110">
+              <img src="../../assets/bussiness.svg" alt="business" class="w-7 mx-auto"/>
+            </div>
+            <h3 class="text-lg font-semibold mb-3 group-hover:text-blue-400 transition-colors text-center">Dependable</h3>
+            <p class="text-gray-400 text-center text-sm group-hover:text-gray-300 transition-colors">
+             99.9% uptime guarantee for all links, ensuring access anytime.
+            </p>
+          </div>
         </div>
-        <h3 class="text-lg font-semibold mb-2">Dependable</h3>
-        <p class="text-gray-400 text-center">
-            99.9% uptime guarantee for all links
-        </p>
       </div>
     </div>
   </section>
@@ -55,7 +80,46 @@
 
 <script>
 export default {
-  name: "Paraphraser",
+  name: "Features"
 };
 </script>
 
+<style scoped>
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.feature-card {
+  animation: fadeIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.feature-card:nth-child(1) { animation-delay: 0.1s; }
+.feature-card:nth-child(2) { animation-delay: 0.2s; }
+.feature-card:nth-child(3) { animation-delay: 0.3s; }
+.feature-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Optional: Add hover animation for the images */
+.feature-card:hover img {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+</style>
