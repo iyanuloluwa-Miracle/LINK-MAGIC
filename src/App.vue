@@ -2,7 +2,7 @@
  <div class="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-blue-900">
   <Navbar/>
   <HeroSection/>
-   <Features/> 
+   <Features/>
  </div>
 </template>
 
@@ -15,8 +15,8 @@ import Features from "./components/Features/Features.vue";
 export default {
   components: {
     Navbar,
-    HeroSection,
-    Features
+   HeroSection,
+   Features
   },
 
   
