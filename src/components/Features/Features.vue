@@ -12,7 +12,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
       <div class="flex flex-col items-center bg-gray-800 p-6 rounded-lg">
         <div class="text-green-500 text-3xl mb-4">
-          <i class="pi pi-pencil"></i>
+          <img src="../../assets/user.svg" alt="user" class="w-8"/>
         </div>
         <h3 class="text-lg font-semibold mb-2">Simple Process</h3>
         <p class="text-gray-400 text-center">
@@ -59,6 +59,3 @@ export default {
 };
 </script>
 
-<style scoped>
-/* Custom styling if needed */
-</style>
