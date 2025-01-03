@@ -22,7 +22,7 @@
 
       <div class="flex flex-col items-center bg-gray-800 p-6 rounded-lg">
         <div class="text-yellow-500 text-3xl mb-4">
-          <i class="pi pi-bolt"></i>
+           <img src="../../assets/link.svg" alt="user" class="w-8"/>
         </div>
         <h3 class="text-lg font-semibold mb-2">Link Processing</h3>
         <p class="text-gray-400 text-center">
@@ -32,7 +32,7 @@
 
       <div class="flex flex-col items-center bg-gray-800 p-6 rounded-lg">
         <div class="text-red-500 text-3xl mb-4">
-          <i class="pi pi-cog"></i>
+          <img src="../../assets/security.svg" alt="user" class="w-8"/>
         </div>
         <h3 class="text-lg font-semibold mb-2">Protected</h3>
         <p class="text-gray-400 text-center">
@@ -42,7 +42,7 @@
 
       <div class="flex flex-col items-center bg-gray-800 p-6 rounded-lg">
         <div class="text-blue-500 text-3xl mb-4">
-          <i class="pi pi-globe"></i>
+         <img src="../../assets/bussiness.svg" alt="user" class="w-8"/> 
         </div>
         <h3 class="text-lg font-semibold mb-2">Dependable</h3>
         <p class="text-gray-400 text-center">
