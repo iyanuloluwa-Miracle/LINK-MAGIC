@@ -6,13 +6,13 @@
           Created with ❤️ by <strong>Dina Iyanuloluwa</strong>
         </p>
         <div class="flex justify-center space-x-4 mb-6">
-          <a href="https://twitter.com/johndoe" target="_blank" rel="noopener noreferrer" 
+          <a href="https://x.com/Dina_iyanex" target="_blank" rel="noopener noreferrer" 
              class="hover:text-blue-400 transition-colors">
             <span class="flex items-center">
-              🐦 Twitter
+              🐦 X
             </span>
           </a>
-          <a href="https://github.com/johndoe" target="_blank" rel="noopener noreferrer"
+          <a href="https://github.com/iyanuloluwa-Miracle" target="_blank" rel="noopener noreferrer"
              class="hover:text-gray-400 transition-colors">
             <span class="flex items-center">
               👨‍💻 GitHub
@@ -20,7 +20,7 @@
           </a>
         </div>
         
-        <a href="https://github.com/johndoe/link-magic" 
+        <a href="https://github.com/iyanuloluwa-Miracle/LINK-MAGIC" 
            target="_blank" rel="noopener noreferrer"
            class="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg transition-colors">
           ⭐ Star the Repo
@@ -37,7 +37,7 @@
       </p>
 
       <p class="text-sm text-gray-400">
-        © 2025 Link Magic 🪄 All rights reserved.
+        © 2025 Link Magic| All rights reserved.
       </p>
     </div>
   </footer>
