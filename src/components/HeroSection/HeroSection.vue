@@ -65,7 +65,7 @@
           <label for="original-url" class="text-purple-200 text-sm block mb-2">Original URL</label>
           <div class="bg-purple-900/50 rounded-lg p-3">
             <p id="original-url" class="text-purple-300 text-sm truncate">
-             {{ urlStore.originalUrl }}
+              {{ urlStore.originalUrl }}
             </p>
           </div>
         </div>
@@ -76,16 +76,19 @@
           <div
             class="bg-purple-900/50 rounded-lg p-3 flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:justify-between"
           >
-            <span id="shortened-url" class="text-purple-300 break-all">{{ shortenedUrl }}</span>
+            <span id="shortened-url" class="text-purple-300 break-all">
+              {{ urlStore.shortenedUrl }}
+            </span>
             <button
               @click="urlStore.copyToClipboard"
               class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-1.5 rounded-lg transition-colors w-full sm:w-auto text-center focus:outline-none focus:ring-2 focus:ring-purple-400/50"
             >
-                {{ urlStore.copied ? 'Copied!' : 'Copy' }}
+              {{ urlStore.copied ? 'Copied!' : 'Copy' }}
             </button>
           </div>
         </div>
-          <div v-if="urlStore.error" class="text-red-400 text-sm mt-4">
+
+        <div v-if="urlStore.error" class="text-red-400 text-sm mt-4">
           {{ urlStore.error }}
         </div>
       </div>
