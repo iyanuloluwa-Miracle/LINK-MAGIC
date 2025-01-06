@@ -4,12 +4,14 @@ export const useUrlStore = defineStore("url", {
   state: () => ({
     originalUrl: "",
     shortenedUrl: "",
+    fetchedOriginalUrl: "",
     isLoading: false,
     error: "",
     copied: false,
   }),
 
   actions: {
+    // Shorten a URL
     async shortenUrl(url) {
       this.isLoading = true;
       this.error = "";
@@ -26,20 +28,46 @@ export const useUrlStore = defineStore("url", {
         );
 
         const data = await response.json();
+        if (!data.success) throw new Error(data.message);
 
-        if (!data.success)
-          throw new Error(data.message || "Failed to shorten URL");
-
-        this.shortenedUrl = data.shortUrl; // Assign shortened URL
+        // Set the shortened URL
+        this.shortenedUrl = data.shortUrl.replace(/\/+$/, ""); // Remove any trailing slashes
       } catch (err) {
-        this.error =
-          err.message || "An error occurred while shortening the URL.";
-        this.shortenedUrl = ""; // Clear shortened URL on error
+        this.error = err.message || "Failed to shorten URL";
+        this.shortenedUrl = "";
       } finally {
-        this.isLoading = false; // Stop loading spinner
+        this.isLoading = false;
       }
     },
 
+    // Get the original URL from a shortened code
+    async getOriginalUrl(shortCode) {
+      this.isLoading = true;
+      this.error = "";
+
+      try {
+        const response = await fetch(
+          `https://link-magic-backend.onrender.com/url/${data.shortCode}`,
+          {
+            method: "GET",
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+
+        const data = await response.json();
+        if (!data.success) throw new Error(data.message);
+
+        // Set the fetched original URL
+        this.fetchedOriginalUrl = data.longUrl;
+      } catch (err) {
+        this.error = err.message || "Failed to fetch original URL";
+        this.fetchedOriginalUrl = "";
+      } finally {
+        this.isLoading = false;
+      }
+    },
+
+    // Copy the shortened URL to the clipboard
     async copyToClipboard() {
       try {
         await navigator.clipboard.writeText(this.shortenedUrl);
@@ -52,9 +80,11 @@ export const useUrlStore = defineStore("url", {
       }
     },
 
+    // Reset all state
     reset() {
       this.originalUrl = "";
       this.shortenedUrl = "";
+      this.fetchedOriginalUrl = "";
       this.error = "";
       this.isLoading = false;
       this.copied = false;
