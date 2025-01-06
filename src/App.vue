@@ -13,6 +13,7 @@ import Navbar from "./components/Navbar/Navbar.vue";
 import HeroSection from "./components/HeroSection/HeroSection.vue";
 import Features from "./components/Features/Features.vue";
 import Footer from "./components/Footer/Footer.vue";
+import { handleShortUrl } from '../src/middleware/middleware';
 
 
 export default {
@@ -22,6 +23,11 @@ export default {
    Features,
    Footer
   },
+
+   async created() {
+    // Check for short URLs when component is created
+    await handleShortUrl();
+  }
 
   
 };

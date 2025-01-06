@@ -30,8 +30,10 @@ export const useUrlStore = defineStore("url", {
         const data = await response.json();
         if (!data.success) throw new Error(data.message);
 
-        // Set the shortened URL
-        this.shortenedUrl = data.shortUrl.replace(/\/+$/, ""); // Remove any trailing slashes
+        // Construct the shortened URL using Vercel domain
+        const shortCode = data.shortUrl.split("/").pop(); // Get the code from the backend URL
+        this.shortenedUrl = `https://link-magic.vercel.app/${shortCode}`;
+
       } catch (err) {
         this.error = err.message || "Failed to shorten URL";
         this.shortenedUrl = "";
@@ -47,7 +49,7 @@ export const useUrlStore = defineStore("url", {
 
       try {
         const response = await fetch(
-          `https://link-magic-backend.onrender.com/url/${data.shortCode}`,
+          `https://link-magic-backend.onrender.com/url/${shortCode}`,
           {
             method: "GET",
             headers: { "Content-Type": "application/json" },
