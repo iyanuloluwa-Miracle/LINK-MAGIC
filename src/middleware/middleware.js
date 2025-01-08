@@ -1,34 +1,25 @@
-
 export async function handleShortUrl() {
-  // Get the path from the current URL
   const path = window.location.pathname;
 
-  // Skip middleware for root path or known component paths
-  if (path === "/" || path.startsWith("/components")) {
-    return;
-  }
+  if (path === "/" || path.startsWith("/components")) return;
 
-  const shortCode = path.slice(1); // Remove leading slash
+  const shortCode = path.slice(1);
 
   try {
     const response = await fetch(
-      `https://link-magic-backend.onrender.com/url/${shortCode}`,
-      {
-        headers: { "Content-Type": "application/json" },
-      }
+      `https://link-magic-backend.onrender.com/url/${shortCode}`
     );
 
     const data = await response.json();
 
-    if (data.success && data.longUrl) {
-      // Redirect to the original URL
+    if (response.ok && data.success && data.longUrl) {
       window.location.href = data.longUrl;
     } else {
-      // Redirect to your home page or show an error
+      console.error("Invalid short code, redirecting to home...");
       window.location.href = "/";
     }
   } catch (error) {
-    console.error("Error fetching URL:", error);
+    console.error("Error resolving short URL:", error);
     window.location.href = "/";
   }
 }

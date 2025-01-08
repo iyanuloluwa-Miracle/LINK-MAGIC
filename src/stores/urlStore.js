@@ -11,7 +11,6 @@ export const useUrlStore = defineStore("url", {
   }),
 
   actions: {
-    // Shorten a URL
     async shortenUrl(url) {
       this.isLoading = true;
       this.error = "";
@@ -28,12 +27,12 @@ export const useUrlStore = defineStore("url", {
         );
 
         const data = await response.json();
-        if (!data.success) throw new Error(data.message);
+        if (!response.ok || !data.success)
+          throw new Error(data.message || "Shortening failed");
 
-        // Construct the shortened URL using Vercel domain
-        const shortCode = data.shortUrl.split("/").pop(); // Get the code from the backend URL
+        // Construct frontend shortened URL
+        const shortCode = data.shortUrl.split("/").pop(); // Extract the code
         this.shortenedUrl = `https://link-magic.vercel.app/${shortCode}`;
-
       } catch (err) {
         this.error = err.message || "Failed to shorten URL";
         this.shortenedUrl = "";
@@ -42,24 +41,19 @@ export const useUrlStore = defineStore("url", {
       }
     },
 
-    // Get the original URL from a shortened code
     async getOriginalUrl(shortCode) {
       this.isLoading = true;
       this.error = "";
 
       try {
         const response = await fetch(
-          `https://link-magic-backend.onrender.com/url/${shortCode}`,
-          {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-          }
+          `https://link-magic-backend.onrender.com/url/${shortCode}`
         );
 
         const data = await response.json();
-        if (!data.success) throw new Error(data.message);
+        if (!response.ok || !data.success)
+          throw new Error(data.message || "Fetching failed");
 
-        // Set the fetched original URL
         this.fetchedOriginalUrl = data.longUrl;
       } catch (err) {
         this.error = err.message || "Failed to fetch original URL";
@@ -69,20 +63,16 @@ export const useUrlStore = defineStore("url", {
       }
     },
 
-    // Copy the shortened URL to the clipboard
     async copyToClipboard() {
       try {
         await navigator.clipboard.writeText(this.shortenedUrl);
         this.copied = true;
-        setTimeout(() => {
-          this.copied = false;
-        }, 2000);
+        setTimeout(() => (this.copied = false), 2000);
       } catch {
         this.error = "Failed to copy URL to clipboard.";
       }
     },
 
-    // Reset all state
     reset() {
       this.originalUrl = "";
       this.shortenedUrl = "";
