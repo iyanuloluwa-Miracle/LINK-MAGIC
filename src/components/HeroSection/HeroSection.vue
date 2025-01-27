@@ -10,6 +10,7 @@
       </p>
     </div>
 
+    
     <!-- URL Input Section -->
     <div class="max-w-3xl mx-auto relative z-10">
       <div class="backdrop-blur-lg bg-white/10 rounded-2xl p-2 shadow-xl">

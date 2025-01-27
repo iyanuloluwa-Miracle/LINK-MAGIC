@@ -12,7 +12,7 @@ export async function handleShortUrl() {
     // Add error handling for empty shortCode
     if (!shortCode) {
       console.error("Invalid short code");
-      window.location.replace("/");
+      window.location.href = "/";
       return;
     }
 
@@ -23,19 +23,19 @@ export async function handleShortUrl() {
     const data = await response.json();
 
     if (response.ok && data.success && data.longUrl) {
-      // Use window.location.replace instead of window.location.href
-      if (data.longUrl.startsWith('http://') || data.longUrl.startsWith('https://')) {
-        window.location.replace(data.longUrl);
-      } else {
-        // Add protocol if missing
-        window.location.replace(`https://${data.longUrl}`);
-      }
+      // Properly handle the URL redirection
+      const targetUrl = data.longUrl.startsWith('http://') || data.longUrl.startsWith('https://')
+        ? data.longUrl
+        : `https://${data.longUrl}`;
+      
+      // Use window.location.href for better browser compatibility
+      window.location.href = targetUrl;
     } else {
       console.error("Invalid short code, redirecting to home...");
-      window.location.replace("/");
+      window.location.href = "/";
     }
   } catch (error) {
     console.error("Error resolving short URL:", error);
-    window.location.replace("/");
+    window.location.href = "/";
   }
 }

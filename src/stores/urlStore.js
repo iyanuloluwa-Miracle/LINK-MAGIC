@@ -8,6 +8,7 @@ export const useUrlStore = defineStore("url", {
     isLoading: false,
     error: "",
     copied: false,
+    isRedirecting: false,
   }),
 
   actions: {
@@ -17,21 +18,28 @@ export const useUrlStore = defineStore("url", {
       this.originalUrl = url;
 
       try {
+        // Validate URL before sending
+        let validUrl = url;
+        if (!url.startsWith('http://') && !url.startsWith('https://')) {
+          validUrl = `https://${url}`;
+        }
+
         const response = await fetch(
           "https://link-magic-backend.onrender.com/url/shorten",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ longUrl: url }),
+            body: JSON.stringify({ longUrl: validUrl }),
           }
         );
 
         const data = await response.json();
-        if (!response.ok || !data.success)
+        if (!response.ok || !data.success) {
           throw new Error(data.message || "Shortening failed");
+        }
 
         // Construct frontend shortened URL
-        const shortCode = data.shortUrl.split("/").pop(); // Extract the code
+        const shortCode = data.shortUrl.split("/").pop();
         this.shortenedUrl = `https://link-magic.vercel.app/${shortCode}`;
       } catch (err) {
         this.error = err.message || "Failed to shorten URL";
@@ -39,47 +47,6 @@ export const useUrlStore = defineStore("url", {
       } finally {
         this.isLoading = false;
       }
-    },
-
-    async getOriginalUrl(shortCode) {
-      this.isLoading = true;
-      this.error = "";
-
-      try {
-        const response = await fetch(
-          `https://link-magic-backend.onrender.com/url/${shortCode}`
-        );
-
-        const data = await response.json();
-        if (!response.ok || !data.success)
-          throw new Error(data.message || "Fetching failed");
-
-        this.fetchedOriginalUrl = data.longUrl;
-      } catch (err) {
-        this.error = err.message || "Failed to fetch original URL";
-        this.fetchedOriginalUrl = "";
-      } finally {
-        this.isLoading = false;
-      }
-    },
-
-    async copyToClipboard() {
-      try {
-        await navigator.clipboard.writeText(this.shortenedUrl);
-        this.copied = true;
-        setTimeout(() => (this.copied = false), 2000);
-      } catch {
-        this.error = "Failed to copy URL to clipboard.";
-      }
-    },
-
-    reset() {
-      this.originalUrl = "";
-      this.shortenedUrl = "";
-      this.fetchedOriginalUrl = "";
-      this.error = "";
-      this.isLoading = false;
-      this.copied = false;
-    },
-  },
+    }
+  }
 });

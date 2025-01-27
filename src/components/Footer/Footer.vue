@@ -32,7 +32,7 @@
         <a href="https://twitter.com/linkmagic" 
            target="_blank" rel="noopener noreferrer"
            class="text-blue-400 hover:text-blue-300 transition-colors">
-          Twitter
+          X
         </a>
       </p>
 

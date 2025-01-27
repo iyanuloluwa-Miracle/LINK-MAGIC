@@ -24,11 +24,12 @@ export default {
    Footer
   },
 
-   async created() {
-    // Check for short URLs when component is created
-    await handleShortUrl();
+  async created() {
+    // Move URL handling to mounted hook to ensure client-side execution
+    await this.$nextTick(async () => {
+      await handleShortUrl();
+    });
   }
-
   
 };
 </script>
