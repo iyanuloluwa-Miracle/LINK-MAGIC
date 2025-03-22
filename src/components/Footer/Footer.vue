@@ -24,7 +24,7 @@
               Dina Iyanuloluwa
             </h2>
             <p class="text-[#B4A5FF] mb-4">
-              Full Stack Developer & UI/UX Designer
+              Software Engineer & Creator of Link Magic
             </p>
             <div class="flex gap-4 justify-center md:justify-start">
               <a 

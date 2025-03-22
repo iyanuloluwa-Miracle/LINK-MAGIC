@@ -1,5 +1,5 @@
 <template>
-  <section class="container mx-auto px-4 pt-24 md:pt-32 pb-16">
+  <section id="hero" class="container mx-auto px-4 pt-24 md:pt-32 pb-16">
     <!-- Hero Text -->
     <div class="text-center mb-12 md:mb-16">
       <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">

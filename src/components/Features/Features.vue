@@ -1,5 +1,5 @@
 <template>
-  <section class="text-white px-6 py-16">
+  <section id="features" class="text-white px-6 py-16">
     <div class="max-w-4xl mx-auto text-center">
       <h1 class="text-3xl md:text-4xl font-bold mb-4 animate-fade-in bg-gradient-to-r from-[#9D6FFF] to-[#B4A5FF] bg-clip-text text-transparent">
         Features
