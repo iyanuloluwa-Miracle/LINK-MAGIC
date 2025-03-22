@@ -1,99 +1,107 @@
 import { defineStore } from "pinia";
+import { ref } from "vue";
 
-export const useUrlStore = defineStore("url", {
-  state: () => ({
-    originalUrl: "",
-    shortenedUrl: "",
-    fetchedOriginalUrl: "",
-    isLoading: false,
-    error: "",
-    copied: false,
-  }),
+export const useUrlStore = defineStore("url", () => {
+  const originalUrl = ref("");
+  const shortenedUrl = ref("");
+  const fetchedOriginalUrl = ref("");
+  const isLoading = ref(false);
+  const error = ref(null);
+  const copied = ref(false);
 
-  actions: {
-    async shortenUrl(url) {
-      this.isLoading = true;
-      this.error = "";
-      this.originalUrl = url;
+  const shortenUrl = async (url) => {
+    try {
+      isLoading.value = true;
+      error.value = null;
+      originalUrl.value = url;
 
-      try {
-        const response = await fetch(
-          "https://link-magic-backend.onrender.com/url/shorten",
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ longUrl: url }),
-          }
-        );
+      // Using Cleanuri API (most straightforward to implement)
+      const response = await fetch("https://cleanuri.com/api/v1/shorten", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          url: url
+        })
+      });
 
-        const data = await response.json();
-        
-        if (!response.ok) {
-          throw new Error(data.message || "Failed to shorten URL");
-        }
-
-        if (!data.success) {
-          throw new Error("URL shortening was not successful");
-        }
-
-        // Use the shortUrl directly from the backend response
-        this.shortenedUrl = data.shortUrl;
-        this.originalUrl = data.originalUrl;
-      } catch (err) {
-        this.error = err.message || "Failed to shorten URL";
-        this.shortenedUrl = "";
-      } finally {
-        this.isLoading = false;
+      const data = await response.json();
+      
+      if (data.error) {
+        throw new Error(data.error);
       }
-    },
 
-    async getOriginalUrl(shortCode) {
-      this.isLoading = true;
-      this.error = "";
+      shortenedUrl.value = data.result_url;
+    } catch (err) {
+      error.value = err.message || "Failed to shorten URL";
+      shortenedUrl.value = "";
+    } finally {
+      isLoading.value = false;
+    }
+  };
 
-      try {
-        const response = await fetch(
-          `https://link-magic-backend.onrender.com/url/${shortCode}`
-        );
+  const getOriginalUrl = async (shortCode) => {
+    try {
+      isLoading.value = true;
+      error.value = "";
 
-        const data = await response.json();
-        
-        if (!response.ok) {
-          throw new Error(data.message || "Failed to retrieve URL");
-        }
+      const response = await fetch(
+        `https://link-magic-backend.onrender.com/url/${shortCode}`
+      );
 
-        if (!data.success) {
-          throw new Error("URL retrieval was not successful");
-        }
-
-        this.fetchedOriginalUrl = data.longUrl;
-        return data.longUrl;
-      } catch (err) {
-        this.error = err.message || "Failed to fetch original URL";
-        this.fetchedOriginalUrl = "";
-        throw err;
-      } finally {
-        this.isLoading = false;
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to retrieve URL");
       }
-    },
 
-    async copyToClipboard() {
-      try {
-        await navigator.clipboard.writeText(this.shortenedUrl);
-        this.copied = true;
-        setTimeout(() => (this.copied = false), 2000);
-      } catch {
-        this.error = "Failed to copy URL to clipboard.";
+      if (!data.success) {
+        throw new Error("URL retrieval was not successful");
       }
-    },
 
-    reset() {
-      this.originalUrl = "";
-      this.shortenedUrl = "";
-      this.fetchedOriginalUrl = "";
-      this.error = "";
-      this.isLoading = false;
-      this.copied = false;
-    },
-  },
+      fetchedOriginalUrl.value = data.longUrl;
+      return data.longUrl;
+    } catch (err) {
+      error.value = err.message || "Failed to fetch original URL";
+      fetchedOriginalUrl.value = "";
+      throw err;
+    } finally {
+      isLoading.value = false;
+    }
+  };
+
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(shortenedUrl.value);
+      copied.value = true;
+      setTimeout(() => {
+        copied.value = false;
+      }, 2000);
+    } catch (err) {
+      error.value = "Failed to copy to clipboard";
+    }
+  };
+
+  const reset = () => {
+    originalUrl.value = "";
+    shortenedUrl.value = "";
+    fetchedOriginalUrl.value = "";
+    error.value = "";
+    isLoading.value = false;
+    copied.value = false;
+  };
+
+  return {
+    originalUrl,
+    shortenedUrl,
+    fetchedOriginalUrl,
+    isLoading,
+    error,
+    copied,
+    shortenUrl,
+    getOriginalUrl,
+    copyToClipboard,
+    reset
+  };
 });

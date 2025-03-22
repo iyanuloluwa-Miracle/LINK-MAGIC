@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="/public/images/logos/link-magic-logo.png" alt="Link Magic Logo" width="200"/>
+  <img src="/src/assets/link_1017466.png" alt="Link Magic Logo" width="200"/>
   
   # Link Magic ✨
   
@@ -71,7 +71,7 @@ npm run build
 yarn build
 ```
 
-## �� Project Structure
+## 🖥 Project Structure
 ```
 link-magic/
 ├── src/
