@@ -1,14 +1,13 @@
-import { createApp } from "vue";
+import { createApp } from 'vue'
+import App from "./App.vue"
+import { createPinia } from "pinia"
+import { createHead } from '@vueuse/head'
 import "./style.css";
-import App from "./App.vue";
-import VueGtag from "vue-gtag";
-import { createPinia } from "pinia";
-const pinia = createPinia();
-const app = createApp(App);
 
-app.use(VueGtag, {
-  config: { id: import.meta.env.VITE_GA_ID },
-});
-app.use(pinia);
+const app = createApp(App)
+const head = createHead()
+const pinia = createPinia()
 
-app.mount("#app");
+app.use(head)
+app.use(pinia)
+app.mount('#app')

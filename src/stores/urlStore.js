@@ -27,12 +27,18 @@ export const useUrlStore = defineStore("url", {
         );
 
         const data = await response.json();
-        if (!response.ok || !data.success)
-          throw new Error(data.message || "Shortening failed");
+        
+        if (!response.ok) {
+          throw new Error(data.message || "Failed to shorten URL");
+        }
 
-        // Construct frontend shortened URL
-        const shortCode = data.shortUrl.split("/").pop(); // Extract the code
-        this.shortenedUrl = `https://link-magic.vercel.app/${shortCode}`;
+        if (!data.success) {
+          throw new Error("URL shortening was not successful");
+        }
+
+        // Use the shortUrl directly from the backend response
+        this.shortenedUrl = data.shortUrl;
+        this.originalUrl = data.originalUrl;
       } catch (err) {
         this.error = err.message || "Failed to shorten URL";
         this.shortenedUrl = "";
@@ -51,13 +57,21 @@ export const useUrlStore = defineStore("url", {
         );
 
         const data = await response.json();
-        if (!response.ok || !data.success)
-          throw new Error(data.message || "Fetching failed");
+        
+        if (!response.ok) {
+          throw new Error(data.message || "Failed to retrieve URL");
+        }
+
+        if (!data.success) {
+          throw new Error("URL retrieval was not successful");
+        }
 
         this.fetchedOriginalUrl = data.longUrl;
+        return data.longUrl;
       } catch (err) {
         this.error = err.message || "Failed to fetch original URL";
         this.fetchedOriginalUrl = "";
+        throw err;
       } finally {
         this.isLoading = false;
       }
