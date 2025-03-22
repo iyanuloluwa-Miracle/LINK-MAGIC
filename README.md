@@ -82,7 +82,6 @@ link-magic/
 │   │   └── Footer/
 │   ├── stores/
 │   │   └── urlStore.js
-│   ├── middleware.js
 │   └── App.vue
 ├── public/
 │   └── images/
