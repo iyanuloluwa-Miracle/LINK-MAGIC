@@ -1,15 +1,77 @@
-# Link Magic Frontend Documentation
+<div align="center">
+  <img src="/public/images/logos/link-magic-logo.png" alt="Link Magic Logo" width="200"/>
+  
+  # Link Magic ✨
+  
+  A modern, lightning-fast URL shortening service built with Vue 3 and TailwindCSS.
+  
+  [![Vue.js](https://img.shields.io/badge/Vue.js-3.0-4FC08D?style=for-the-badge&logo=vue.js&logoColor=white)](https://vuejs.org/)
+  [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-3.0-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+  [![Pinia](https://img.shields.io/badge/Pinia-State_Management-yellow?style=for-the-badge&logo=vue.js&logoColor=white)](https://pinia.vuejs.org/)
+  [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 
-## Project Overview
-Link Magic is a URL shortening service built with Vue.js and TailwindCSS. The application allows users to convert long URLs into short, manageable links that can be easily shared.
+  [View Demo](https://link-magic.vercel.app) · [Report Bug](https://github.com/iyanuloluwa-Miracle/LINK-MAGIC/issues) · [Request Feature](https://github.com/iyanuloluwa-Miracle/LINK-MAGIC/issues)
+</div>
 
-## Tech Stack
-- Vue.js 3
-- Pinia (State Management)
-- TailwindCSS
-- Fetch API
+## ✨ Features
 
-## Project Structure
+- 🚀 **Instant URL Shortening** - Transform long URLs into short, memorable links in milliseconds
+- 📋 **One-Click Copy** - Copy shortened URLs to clipboard with a single click
+- 📱 **Responsive Design** - Perfect experience across all devices
+- 🛡️ **Input Validation** - Smart URL validation and error handling
+- ⚡ **Real-Time Feedback** - Immediate visual feedback for all actions
+- 🎯 **Smart Redirection** - Efficient handling of shortened URL redirects
+
+## 🖥️ Demo & Screenshots
+
+<div align="center">
+  <img src="/public/images/screenshots/homepage.png" alt="Link Magic Homepage" width="100%"/>
+</div>
+
+## 🛠️ Tech Stack
+
+- **Frontend Framework:** Vue.js 3
+- **State Management:** Pinia
+- **Styling:** TailwindCSS
+- **HTTP Client:** Fetch API
+- **Build Tool:** Vite
+- **Deployment:** Vercel
+
+## 🚀 Quick Start
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/iyanuloluwa-Miracle/LINK-MAGIC.git
+cd LINK-MAGIC
+```
+
+2. **Install dependencies**
+```bash
+npm install
+# or
+yarn install
+```
+
+3. **Set up environment variables**
+```bash
+cp .env.example .env
+```
+
+4. **Start development server**
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+5. **Build for production**
+```bash
+npm run build
+# or
+yarn build
+```
+
+## �� Project Structure
 ```
 link-magic/
 ├── src/
