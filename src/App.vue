@@ -1,5 +1,5 @@
 <template>
- <div class="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-blue-900">
+ <div class="min-h-screen bg-gradient-to-br from-[#1A103C] via-[#2D1B69] to-[#3B238C]">
   <Navbar/>
   <HeroSection/>
   <Features/>

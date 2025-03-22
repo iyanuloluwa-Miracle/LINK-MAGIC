@@ -1,10 +1,10 @@
 <template>
-    <div class="bg-gradient-to-r from-purple-900 to-purple-800 border-b border-white/20 fixed top-0 w-full z-50">
+    <div class="bg-gradient-to-r from-[#1A103C]/90 to-[#2D1B69]/90 backdrop-blur-md border-b border-white/10 fixed top-0 w-full z-50">
         <nav class="px-4 py-3 md:py-4">
             <div class="container mx-auto flex justify-between items-center">
                 <!-- Logo Section -->
                 <div class="flex items-center space-x-2">
-                    <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 text-[#9D6FFF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                     </svg>
                     <span class="text-white text-lg md:text-xl font-bold tracking-wide">LinkMagic</span>
@@ -35,10 +35,10 @@
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:flex items-center space-x-6">
-                    <button class="text-gray-300 hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white/20 focus:ring-offset-2 focus:ring-offset-purple-900 rounded-lg px-3 py-1">
+                    <button class="text-[#B4A5FF] hover:text-white transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#9D6FFF]/20 focus:ring-offset-2 focus:ring-offset-[#1A103C] rounded-lg px-3 py-1">
                         Features
                     </button>
-                    <button class="bg-slate-700 text-gray-100 px-6 py-2 rounded-full hover:bg-slate-600 transition-all duration-200 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-white/20 focus:ring-offset-2 focus:ring-offset-purple-900">
+                    <button class="bg-[#9D6FFF] text-white px-6 py-2 rounded-full hover:bg-[#8A5AFF] transition-all duration-200 shadow-lg hover:shadow-[#9D6FFF]/25 focus:outline-none focus:ring-2 focus:ring-[#9D6FFF]/50">
                         Get Started
                     </button>
                 </div>

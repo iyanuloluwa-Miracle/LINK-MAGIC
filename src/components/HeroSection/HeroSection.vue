@@ -5,7 +5,7 @@
       <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">
         Transform Your Links
       </h1>
-      <p class="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto">
+      <p class="text-[#B4A5FF] text-lg md:text-xl max-w-2xl mx-auto">
         Create short, memorable links in seconds
       </p>
     </div>
@@ -17,20 +17,20 @@
 
     <!-- URL Input Section -->
     <div class="max-w-3xl mx-auto relative z-10">
-      <div class="backdrop-blur-lg bg-white/10 rounded-2xl p-2 shadow-xl">
+      <div class="backdrop-blur-lg bg-[#2D1B69]/30 rounded-2xl p-2 shadow-xl border border-[#9D6FFF]/20">
         <form @submit.prevent="handleSubmit" class="flex flex-col sm:flex-row gap-2">
           <input
             v-model="url"
             type="url"
             placeholder="Paste your long URL here"
-            class="flex-1 bg-transparent text-white placeholder-gray-400 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500/50 rounded-xl"
+            class="flex-1 bg-[#1A103C]/50 text-white placeholder-[#B4A5FF]/70 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#9D6FFF]/50 rounded-xl border border-[#9D6FFF]/20"
             required
             aria-label="URL to shorten"
           />
           <button
             type="submit"
             :disabled="urlStore.isLoading"
-            class="bg-blue-600 text-white px-6 sm:px-8 py-3 rounded-xl hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+            class="bg-[#9D6FFF] text-white px-6 sm:px-8 py-3 rounded-xl hover:bg-[#8A5AFF] transition-colors flex items-center justify-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#9D6FFF]/50 shadow-lg hover:shadow-[#9D6FFF]/25"
           >
             <span>{{ urlStore.isLoading ? 'Shortening...' : 'Shorten' }}</span>
             <svg
@@ -55,7 +55,7 @@
     <div class="flex items-center justify-center p-6 md:p-9 mt-8">
       <div
         v-if="urlStore.shortenedUrl"
-        class="bg-purple-800/50 backdrop-blur-sm rounded-2xl p-4 md:p-6 max-w-md w-full shadow-lg transition-all"
+        class="bg-[#2D1B69]/40 backdrop-blur-sm rounded-2xl p-4 md:p-6 max-w-md w-full shadow-lg border border-[#9D6FFF]/20"
       >
         <!-- Success Header -->
         <div class="flex items-center gap-2 mb-4 md:mb-6">
